@@ -850,9 +850,9 @@ public class MainPanel extends javax.swing.JFrame {
         jPanel9.add(jPanel12);
         jPanel9.repaint();
         jPanel9.revalidate();
-        
-       PreparacaoEmbarcacao game = new PreparacaoEmbarcacao( this.user,true);
-       game.setVisible(true);
+        dispose();
+        PreparacaoEmbarcacao game = new PreparacaoEmbarcacao( this.user,true);
+        game.setVisible(true);
     }//GEN-LAST:event_jQuickGameActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -915,6 +915,8 @@ public class MainPanel extends javax.swing.JFrame {
         jPanel9.add(jPanel12);
         jPanel9.repaint();
         jPanel9.revalidate();
+        
+        dispose();
         
         PreparacaoEmbarcacao game = new PreparacaoEmbarcacao( this.user,false);
         game.setVisible(true);

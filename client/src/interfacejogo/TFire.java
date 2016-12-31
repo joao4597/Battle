@@ -7,6 +7,7 @@ package interfacejogo;
 
 import java.awt.Color;
 import java.awt.Point;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,23 +38,32 @@ public class TFire implements Runnable{
             destination.jButtonPosition.setBackground(Color.blue);
         } else {
             destination.jButtonPosition.setBackground(Color.RED);
-            if (!resultado.equals("red")) {
-                destination.jButtonPosition.setText("FF");
-            }
+                if (!resultado.equals("red")) {
+                    this.game.setTotalDead(this.game.getTotalDead() + 1);
+                    destination.jButtonPosition.setText("DEAD");
+                }
         }
 
         destination.jButtonPosition.setEnabled(false);
 
-        if (!game.getTeste().gameState().equals("GAMEOVER")) {
-            //iJogo.adversarioJoga();
-        } else {
-            System.out.println("GANHOU!!!!");
-        }
+        String gameState = game.getTeste().gameState();
+        verifySate(gameState);
         
         paintReceiveShot(game.getTeste().receiveShot(),game.getTeste().getPosition());
-        game.getTeste().gameState();
+        verifySate(game.getTeste().gameState());
         game.setMyTurn(true);
         
+    }
+    
+    public void verifySate(String message) {
+        if (message.equals("##GameOver##")) {
+            if (this.game.getTotalDead() == 5) {
+                message = "Ganhou!!!!";
+            }else {
+                message = "Perdeu!!!!!";
+            }
+            JOptionPane.showMessageDialog(null, message, "Status: ", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
     public void paintReceiveShot(String color,String position) {

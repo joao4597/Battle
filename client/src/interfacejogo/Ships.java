@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import model.SHIP_TYPE;
 import model.Ship;
+import sun.java2d.opengl.OGLRenderQueue;
 
 public class Ships extends javax.swing.JPanel {
     private Map<SHIP_TYPE,ShipIO> ships;
@@ -64,6 +65,7 @@ public class Ships extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+
         jButton1.setText("A aguardar...");
         this.table.executeClick(new Point(0,0));
         
@@ -85,6 +87,19 @@ public class Ships extends javax.swing.JPanel {
         for(ShipIO shipIO : this.ships.values()) {
             if(shipIO.getShip().isHover()) {
                 result = shipIO;
+            }
+        }
+        return result;
+    }
+    
+    public ShipIO getShipInPosition(Point pt) {
+        ShipIO result = null;
+        
+        for(ShipIO sp : this.ships.values()) {
+            for(Point p : sp.getShip().getPoints()) {
+                if(p.x == pt.x && pt.y == p.y) {
+                    result = sp;
+                }
             }
         }
         return result;

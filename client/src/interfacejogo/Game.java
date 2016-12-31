@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.SHIP_TYPE;
@@ -22,6 +23,8 @@ public class Game extends javax.swing.JPanel implements Observer  {
     private final JLabel labNumeros[] = new JLabel[10];
     
     private JLabel labelMyTurn = null;
+    
+    private int totalDead = 0;
 
     private User user;
 
@@ -143,6 +146,7 @@ public class Game extends javax.swing.JPanel implements Observer  {
                     this.first = false;
                 }
                 
+                
                 IJ jogo = new IJ(this, this.quick, this.first, this.user, this.user);
                 jogo.setVisible(true);
 
@@ -151,7 +155,7 @@ public class Game extends javax.swing.JPanel implements Observer  {
                 putShipInPosition(ships.getActiveShip(), position);
             }
         } else if (modoTabuleiro.equals("INIMIGO")) {
-            if(myTurn) {
+            if(myTurn && !this.finish) {
                 mandarTiro(position);
             }
         }
@@ -270,6 +274,16 @@ public class Game extends javax.swing.JPanel implements Observer  {
         this.labelMyTurn = jlabel;
     }
 
+    public int getTotalDead() {
+        return totalDead;
+    }
+
+    public void setTotalDead(int totalDead) {
+        this.totalDead = totalDead;
+    }
+    
+    
+
     private void putShipInPosition(ShipIO shipIO, Point position) {
         if (shipIO != null) {
             if (isAvailableSpace(shipIO, position)) {
@@ -321,7 +335,7 @@ public class Game extends javax.swing.JPanel implements Observer  {
         return result;
     }
 
-    @SuppressWarnings("empty-statement")
+    
     private void createQuickGame() {
         Random generator = new Random();
         int i = generator.nextInt(9);
