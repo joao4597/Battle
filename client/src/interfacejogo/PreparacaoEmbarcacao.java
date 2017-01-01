@@ -1,11 +1,12 @@
 package interfacejogo;
 
 import java.awt.Rectangle;
+import javax.swing.JButton;
 import model.User;
 
 public class PreparacaoEmbarcacao extends javax.swing.JFrame {
-    private final Game table;
-    private final User user;
+    private Game table;
+    private User user;
     
     public PreparacaoEmbarcacao(User user,boolean quickGame) {
         initComponents();

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
 /**
@@ -12,15 +17,6 @@ public class User {
     private int wins;
     private int losses;
 
-    /**
-     * Classe de utilizador do jogo
-     * @param id ID do utilizador
-     * @param username Username do utilizador
-     * @param password Password do utilizador
-     * @param points Pontos do utilizador
-     * @param wins Vitórias do utilizador
-     * @param losses Derrotas do utilizador
-     */
     public User(int id, String username, String password, int points, int wins, int losses) {
         this.id = id;
         this.username = username;
@@ -77,4 +73,6 @@ public class User {
     public void setLosses(int losses) {
         this.losses = losses;
     }
+    
+    
 }

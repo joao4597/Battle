@@ -11,7 +11,9 @@ public class Position extends Observable{
     
     public JButton jButtonPosition;
     private static Color padrao;
-    private final Point point;
+    private boolean retiro = false;
+    private Point point;
+    
      
     public Position(String pessoa, Point point, String position, Game parent) {
         jButtonPosition = new JButton();

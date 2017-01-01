@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.SHIP_TYPE;
@@ -37,19 +38,6 @@ public class Game extends javax.swing.JPanel implements Observer  {
     private boolean myTurn = false;
     private boolean quick = false;
 
-    /**
-     * Classe do tabuleiro de um jogador
-     * @param modo define se o tabuleiro é do próprio jogador ou do adversário
-     * @param quick define se o tabuleiro é de um jogo rápido
-     * @param user utilizador do tabuleiro
-     * @param first booleano para definir se é o primeiro tabuleiro onde se escolhe uma posição para atacar
-     * @param ij interface de jogo onde o tabuleiro assenta
-     * 
-     * Um tabuleiro é composto pelo conjunto de letras (A-J) e números (1-10) que identificam as posições de uma matriz 10x10.
-     * O facto de o tabuleiro ser do próprio jogador e do adversário altera a disposição das letras e números
-     * Se o tabuleiro for do próprio jogador não é possível clicar nas posições deste enquanto joga uma partida.
-     */
-    
     public Game(String modo, boolean quick, User user, boolean first,IJ ij) {
         initComponents();
         this.user = user;
@@ -132,28 +120,13 @@ public class Game extends javax.swing.JPanel implements Observer  {
         executeClick(position);
     }
 
-    /**
-    * Função para converter num array de strings as posições dos navios, pela seguinte ordem: Porta-Avioes, Navio de Guerra, Cruzador, Submarino, Destruidor!
-    * @param posicoes array que vai guardar as posicoes dos barcos
-    * @param coordenadas conjunto das localizações de um barco
-    * @param inicio onde começar a colocar as posições no array
-    * 
-    * Para cada navio é revisto o seu conjunto de coordenadas e colocado na ordem correta no array
-    */
-    
-    private void mensagemCoordenadas(String[] posicoes, Point[] coordenadas, int inicio) {
-        for (Point ponto : coordenadas)
-            posicoes[inicio++] = LETRASCONTRARIO[ponto.x] + NUMEROS[ponto.y];
+    private String[] mensagemCoordenadas(String[] posicoes, Point[] coordenadas, int inicio) {
+        for (Point ponto : coordenadas) {
+            posicoes[inicio++] = LETRASCONTRARIO[ponto.x] + NUMEROS[ponto.y];//local[ponto.y][ponto.x];
+        }
+        return posicoes;
     }
 
-    /**
-     * Função que regula o funcionamento de qualquer botão no tabuleiro
-     * @param position define a posição do botão clicado no tabuleiro
-     * 
-     * Se o tabuleiro for do próprio jogador, a função coloca um navio anteriormente selecionado no tabuleiro.
-     * Se o tabuleiro for do adversário, a função manda um tiro para essa posição
-     */
-    
     public void executeClick(Point position) {
         //FIRE
         if (modoTabuleiro.equals("PROPRIO")) {
@@ -188,10 +161,6 @@ public class Game extends javax.swing.JPanel implements Observer  {
         }
     }
 
-    /**
-     * Função que inicia uma thread para tratar de lançar um tiro numa posição
-     * @param position posição selecionada
-     */
     public void mandarTiro(Point position) {
         //Need thread, without thread GUI not paint correctly
         Thread t = new Thread(new TFire(this, position,this.iJogo));
@@ -200,14 +169,19 @@ public class Game extends javax.swing.JPanel implements Observer  {
     
     public Point calculatePositionBasedOnString(String position) {
         Point result = new Point(-1,-1);
-        for(int i = 0 ; i < LETRASCONTRARIO.length;i++) {
-            if(LETRASCONTRARIO[i].equals(position.substring(0, 1))) result.x = i;
+        int i = 0;
+        int j = 0;
+        for(i = 0 ; i < LETRASCONTRARIO.length;i++) {
+            if(LETRASCONTRARIO[i].equals(position.substring(0, 1))) {
+                result.x = i;
+            }
         }
 
-        for(int j = 0 ; j < NUMEROS.length;j++) {
-            if(NUMEROS[j].equals(position.substring(1, position.length()))) result.y = j;
+        for(j = 0 ; j < NUMEROS.length;j++) {
+            if(NUMEROS[j].equals(position.substring(1, position.length()))) {
+                result.y = j;
+            }
         }
-        
         return result;
     }
 
@@ -308,14 +282,7 @@ public class Game extends javax.swing.JPanel implements Observer  {
         this.totalDead = totalDead;
     }
     
-    /**
-     * Função para colocar um navio no tabuleiro depois de selecionado o navio e a sua posição inicial
-     * @param shipIO interface do navio selecionado
-     * @param position posição inicial do navio
-     * 
-     * Inicialmente a função verifica se é possível colocar o navio no local pretendido, com o auxílio da função isAvailableSpace.
-     * Por fim é colocado o navio por cima das posições pretendidas no tabuleiro do próprio jogador.
-     */
+    
 
     private void putShipInPosition(ShipIO shipIO, Point position) {
         if (shipIO != null) {
@@ -340,14 +307,6 @@ public class Game extends javax.swing.JPanel implements Observer  {
         }
     }
 
-    /**
-     * Função para verificar se existe possibilidade de colocar um navio num local definido pelo utilizador!
-     * 
-     * @param shipIO interface do navio a colocar
-     * @param position posição inicial
-     * @return (boolean) retorna se é possível ou não colocar o navio sem haver sobreposição nem sair fora do tabuleiro
-     */
-    
     private boolean isAvailableSpace(ShipIO shipIO, Point position) {
         boolean result = true;
         int ship_size = shipIO.getShip().getPoints().length;
@@ -376,9 +335,7 @@ public class Game extends javax.swing.JPanel implements Observer  {
         return result;
     }
 
-    /**
-     * Função para criar um jogo rápido com colocação automática dos navios no tabuleiro
-     */
+    
     private void createQuickGame() {
         Random generator = new Random();
         int i = generator.nextInt(9);
