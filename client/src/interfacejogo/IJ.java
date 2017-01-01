@@ -28,13 +28,15 @@ public class IJ extends javax.swing.JFrame {
         tabuleiroProprio.setParent(jogo);
         
         if(!comecaProprio) adversarioJoga();
-        //else tabuleiroInimigo.number = -1;
     }
     
+    /**
+     * Função para definir a jogada do adversário!
+     */
+    
     public void adversarioJoga() {
-        System.out.println("Mandar tiro " + tabuleiroProprio.isFirst());
         if (!this.tabuleiroProprio.isFirst()) {
-            updateMyTable(tabuleiroProprio.getTeste().receiveShot(),tabuleiroProprio.getTeste().getPosition());
+            updateMyTable(tabuleiroProprio.getTeste().getPosition());
             tabuleiroProprio.getTeste().gameState();
             tabuleiroProprio.setMyTurn(true);
             tabuleiroInimigo.setMyTurn(true);
@@ -57,12 +59,16 @@ public class IJ extends javax.swing.JFrame {
         //tabuleiroInimigo.number = -1;
     }
 
-    public void updateMyTable(String color, String stPosition) {
+    /**
+     * Função para atualizar o próprio tabuleiro quando ocorre qualquer ação nele
+     * @param stPosition posicao do tabuleiro a alterar
+     */
+    
+    public void updateMyTable(String stPosition) {
         Point position = tabuleiroProprio.calculatePositionBasedOnString(stPosition);
         if(position.x != -1 && position.y != -1){
             tabuleiroProprio.getLocal()[position.x][position.y].jButtonPosition.setText("X");
         }
-
     }
     
     @SuppressWarnings("unchecked")

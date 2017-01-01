@@ -6,9 +6,15 @@ import javax.swing.BorderFactory;
 import model.Ship;
 
 public class ShipIO extends javax.swing.JPanel {
-    private Game table;
-    private Ship ship;
+    private final Game table;
+    private final Ship ship;
     public final int SIZE_SHIP = 40;
+    
+    /**
+     * Construtor para definir qual é o barco e o tabuleiro onde irá pertencer
+     * @param ship Navio desta interface
+     * @param table Tabuleiro dono deste navio
+     */
     
     public ShipIO(Ship ship,Game table) {
         initComponents();
@@ -103,8 +109,14 @@ public class ShipIO extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Função para quando se clica em cima de um navio, de forma a selecioná-lo para inserir no tabuleiro
+     * @param evt 
+     * 
+     * Quando se escolhe um navio, selecciona-se o mesmo com a função selecionarBarco() e deselecciona-se os outros com unSelectAll()
+     */
+    
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        // TODO add your handling code here:
         if(isVisible()) {
             if(!ship.isHover()) {
                 this.table.getShips().unSelectAll();
@@ -117,12 +129,18 @@ public class ShipIO extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_formMouseClicked
 
+    /**
+     * Função para selecionar um navio
+     */
     private void selecionarBarco() {
         verticalShip.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         horizontalShip.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        //this.table.number = ship.getNum(); 
         ship.setHover(true);
     }
+    
+    /**
+     * Função para deselecionar um navio
+     */
     
     public void unSelectShip() {
         verticalShip.setBorder(BorderFactory.createBevelBorder(0));
@@ -131,12 +149,20 @@ public class ShipIO extends javax.swing.JPanel {
         ship.setHover(false);
     }
     
+    /**
+     * Função para fazer desaparecer um navio quando este é colocado no tabuleiro
+     */
     public void disableShip() {
         horizontalShip.setVisible(false);
         verticalShip.setVisible(false);
         this.setEnabled(false);
         this.ship.setPosition(true);
     }
+    
+    /**
+     * Função para colocar o navio na horizontal ou vertical
+     * @param v booleano que define se é na vertical (true) ou horizontal (false)
+     */
     
     private void posicionarDirecao(boolean v) {
         verticalShip.setVisible(v);

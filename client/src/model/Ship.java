@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.awt.Color;
@@ -20,6 +15,13 @@ public class Ship {
     private int num;
     private Point[] points;
 
+    /**
+     * Classe do navio
+     * @param name Nome do navio
+     * @param num ID do navio
+     * @param points Capacidade do navio
+     */
+    
     public Ship(String name, int num,Point[] points) {
         this.name = name;
         this.num = num;

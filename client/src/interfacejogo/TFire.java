@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfacejogo;
 
 import java.awt.Color;
@@ -24,6 +19,13 @@ public class TFire implements Runnable{
         this.allGame = allGame;
     }
     
+    /**
+     * Thread para verificar o resultado de um tiro realizado pelo próprio jogador
+     * 
+     * Envia-se uma mensagem ao servidor como se mandou um tiro e o servidor retorna a mensagem com a cor que se deve colocar nessa posição
+     * Blue e a posição fica azul, logo a pessoa nao acertou em nenhum barco
+     * Red e a posição fica vermelha, logo a pessoa acertou num barco
+     */
     @Override
     public void run() {
 
@@ -49,12 +51,16 @@ public class TFire implements Runnable{
         String gameState = game.getTeste().gameState();
         verifySate(gameState);
         
-        paintReceiveShot(game.getTeste().receiveShot(),game.getTeste().getPosition());
+        paintReceiveShot(game.getTeste().getPosition());
         verifySate(game.getTeste().gameState());
         game.setMyTurn(true);
         
     }
     
+    /**
+     * Verificar se o jogo terminou ou nao
+     * @param message mensagem que o servidor envia ao jogador depois de qualquer ação de tiro
+     */
     public void verifySate(String message) {
         if (message.equals("##GameOver##")) {
             if (this.game.getTotalDead() == 5) {
@@ -66,10 +72,7 @@ public class TFire implements Runnable{
         }
     }
     
-    public void paintReceiveShot(String color,String position) {
-        if(allGame != null) {
-           allGame.updateMyTable(color, position);
-        }
-        
+    public void paintReceiveShot(String position) {
+        if(allGame != null) allGame.updateMyTable(position);
     }
 }
