@@ -22,8 +22,12 @@ public class MainPanel extends javax.swing.JFrame {
     private User user;
     /**
      * Creates new form NewJFrame
+<<<<<<< HEAD
      * @param user calass que contem informação do utilizador
      * @see User
+=======
+     * @param user
+>>>>>>> cabeef0ead0e039552a187a0d2b456f590856c18
      */
     public MainPanel(User user) {
         initComponents();
