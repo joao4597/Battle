@@ -8,7 +8,8 @@ package server;
 import java.util.List;
 
 /**
- *
+ * Esta class permite juntar dois jogadores no mesmo NewGame, se for criada e nao existirem jogadores á espera cria um novo objeto da class NewGame, se já existir um jogador á espera então junta o segundo jogador ao objeto NewGame previamente criado;
+ * quando recebe um segundo jogador inicia a thread de NewGame
  * @author joao
  */
 public class WatingList {
@@ -25,6 +26,10 @@ public class WatingList {
         }
     }
     
+    /**
+     * Serve para a CLientThreads saber se quando criou WatingList vai ser o jogador 1 ou o jogador 2
+     * @return 1 se for o jogador 1 e portanto terá que aguardar por um segundo jogador; 2 se for o jogador 2.
+     */
     public int returnOrder(){
         if(wating == true){
             System.out.println("Return Order-> returnou 1");
@@ -36,6 +41,11 @@ public class WatingList {
         }
     }
     
+    /**
+     * invocado pelo ClientThreads, server para a passar a thread onde está a decorrer o jogo, desta forma pode ver quando o jogo terminou
+     * @return objeto da thread onde deccore o jogo.
+     * @see ClientThreads
+     */
     public NewGame returnThread(){
         return game;
     } 

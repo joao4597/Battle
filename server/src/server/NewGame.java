@@ -7,7 +7,11 @@
 package server;
 
 import java.util.List;
-
+/**
+ * class que gere um jogo entre dois jogadores, ao criar a class é passada informação relaiva ao jogador 1, posição dos barcos e sokect
+ * @see WatingList
+ * @author joao
+ */
 public class NewGame extends Thread{
     
     SocketServer sock1 = null;
@@ -35,12 +39,22 @@ public class NewGame extends Thread{
         proto1 = new ProtoX(sock);
     }
     
-    void secondPlayer(List<String> positionsList, SocketServer sock){
+    /**
+     * Metodo usado para guardar as informaçoes do jogador 2, guarda o que recebe em variaveis da class, Ainformação relativa ao primeiro jogador é passada no contrutor, este processo é gerido por WaitingList
+     * @see WatingList
+     * @param positionsList posicoes dos barcos
+     * @param sock socket para comunicar
+     */
+    public void secondPlayer(List<String> positionsList, SocketServer sock){
         this.sock2 = sock;
         this.positionsList2 = positionsList;
         proto2 = new ProtoX(sock);
     }
     
+    /**
+     * verifica se o jogo ainda nao acabou, atraves do numero de tiros que cada barco levou
+     * @return true se jogo ainda nao tiver acabado, false caso contrario
+     */
     boolean gameIsAlive(){
         if((portaAvioes1 < 5 ||
             navioDeGuerra1 < 4 ||
@@ -57,6 +71,13 @@ public class NewGame extends Thread{
             return false;
     }
     
+    
+    /**
+     * metodo run gere o jogo, recebe tiros intercalados de cada um dos jogadores, verifica se acertou em algum barco, envia uma resposta para quem enviou o tiro a dizer se acertou ou nao
+     * e envia uma mensagem para quem o tiro é destinado com a posiçao e com a informaçao de que acertou ou na; Para alem disto envia tambem entre cada tiro uma mensagem a dizer se o jogo já acabou ou nao.
+     * Para enviar as mensagens usa o ProtoX
+     * @see ProtoX
+     */
     @Override
     public void run (){
         int i;

@@ -13,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
  */
 
 /**
- *
+ * Class usada para interpretar mensagens do servidor
  * @author joao
  */
 public class ProtoX {
@@ -36,8 +36,8 @@ public class ProtoX {
     /**
      * usado para enviar a informação de login de forma a que o servidor a consiga interpretar;<br>
      * recebe uma resposta da socket, interpreta-a e retorna de acordo com o recebido;<br>
-     * @param username
-     * @param password
+     * @param username username
+     * @param password password
      * @return (integer), 0 em caso de sucesso, 1 caso contrário;
      */
     public int login(String username, String password){
@@ -67,8 +67,8 @@ public class ProtoX {
     /**
      * usado para enviar um pedido de registo para o servidor;<br>
      * recebe e interpreta a resposta do servidor. (Registo pode não ser aceite caso username já exista);<br>
-     * @param username
-     * @param password
+     * @param username username
+     * @param password password
      * @return (integer), 0 em caso de sucesso, 1 caso contrário; 
      */
     public int register(String username, String password){
@@ -95,6 +95,11 @@ public class ProtoX {
         return -2;
     }
     
+    /**
+     * envia tiro para o servidor
+     * @param position posição do tiro
+     * @return String "blue" se não acertou em nada, String "red" se acertao em algum barco
+     */
     public String sendShot(String position){
         String returned;
         sock.toServer("##Shot##" + position + "##");
@@ -110,6 +115,10 @@ public class ProtoX {
         }
     }
     
+    /**
+     * recebe um tiro do servidor
+     * @return String "blue" se falhou, "red" se acertou
+     */
     public String receiveShot(){
         String returned;
         returned = sock.fromServer();
@@ -126,14 +135,43 @@ public class ProtoX {
         }
     }
     
+    /**
+     * pergunta ao servidor o estado do jogo
+     * @return String ##GameIsAlive## se o jogo estiver vivo ou ##GameOver## Se o jogo tiver acabado
+     */
     public String gameState(){
         return sock.fromServer();
     }
     
+    /**
+     * depois de receber um tiro esta função é usada para saber a posição
+     * @return posição
+     */
     public String getPosition() {
         return this.position;
     }
     
+    /**
+     * metodo usado para começar novo jogo no servidor
+     * @param a -1ª posição do porta avioes
+     * @param b -2ª posição do porta avioes
+     * @param c -3ª posição do porta avioes
+     * @param d -4ª posição do porta avioes
+     * @param e -5ª posição do porta avioes
+     * @param f -1ª posição do navio de guerra
+     * @param g -2ª posição do navio de guerra
+     * @param h -3ª posição do navio de guerra
+     * @param i -4ª posição do navio de guerra
+     * @param j -1ª posição do cruzador
+     * @param k -2ª posição do cruzador
+     * @param l -3ª posição do cruzador
+     * @param m -1ª posição do submarino
+     * @param n -2ª posição do submarino
+     * @param o -3ª posição do submarino
+     * @param p -1ª posição do destruidor
+     * @param q -2ª posição do destruidor
+     * @return String ##Accepted1## ou ##Accepted2## dependendo se é o jogador 1 ou 2
+     */
     public String newGame(String a, String b, String c, String d, String e, String f, String g, String h, String i, String j, String k, String l, String m, String n, String o, String p, String q){
         String returned;
         sock.toServer("##NewGame##" + a + "##" + b + "##" + c + "##" + d + "##" + e + "##" + f + "##" + g + "##" + h + "##" + i + "##" + j + "##" + k + "##" + l + "##" + m + "##" + n + "##" + o + "##" + p + "##" + q + "##");

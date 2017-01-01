@@ -11,9 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
- * @author joao
  * class usada para efetuar o registo de um visitante na base de dados
+ * @author joao
+ * 
  */
 public class RegisterDB {
     Connection con = null;
@@ -28,7 +28,7 @@ public class RegisterDB {
     /**
      * 
      * @param username username pretendido
-     * @param password 
+     * @param password em md5
      * @return (boolean), true se nome de utilizador não estiver em uso, fase caso contrário
      */
     public boolean register(String username, String password){

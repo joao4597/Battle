@@ -13,9 +13,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- *
+ *class usada para estabelecer comunicação entre cliente e servidor
  * @author joao
- * class usada para estabelecer comunicação entre cliente e servidor
+ * 
  */
 class SocketServer {
 

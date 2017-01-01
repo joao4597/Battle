@@ -11,9 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
- * @author joao
  * class usada para confiramar que conjunto (username, password) existem na base de dados
+ * @author joao
+ * 
  */
 public class LoginDB {
     public int wins, losses, points;
@@ -28,8 +28,8 @@ public class LoginDB {
     }
     /**
      * 
-     * @param username
-     * @param password
+     * @param username usarname do visitante
+     * @param password password em md5
      * @return (boolean), true caso os dados estejam corretos, false caso contrário
      */
     public boolean confirmeLogin(String username, String password){

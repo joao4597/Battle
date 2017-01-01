@@ -27,7 +27,7 @@ public class SocketClient{
     /**
      * cria socket para a porta 4415 para estabelecer comunicação com o servidor e guarda o objeto da comunicação numa variável da class <br>
      * cria streams de input e output e guarda os objetos em variáveis da class; <br>
-     * @throws IOException 
+     * @throws IOException para jre
      */
     public SocketClient() throws IOException {
         if(kkSocket==null){
@@ -68,7 +68,7 @@ public class SocketClient{
     }
     /**
      * faz close() da socket o streams creados pelo construtor da class;<br>
-     * @throws IOException 
+     * @throws IOException para jre
      */
     public void closeSocket() throws IOException{
         out.close();

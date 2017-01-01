@@ -17,9 +17,9 @@ import java.util.List;
 
 
 /**
- *
+ *class usada para estabelecer o protocolo de comunicação entre cliente e servidor
  * @author joao
- * class usada para estabelecer o protocolo de comunicação entre cliente e servidor
+ * 
  */
 public class ProtoX {
     
@@ -42,7 +42,7 @@ public class ProtoX {
      * @return (String), "Login" caso a string recebida da socket contenha informação de login, "Register" caso a string contenha informação de registo,
      * "NewGame" caso a string contenha a informação para novo jogo.
      */
-    String handler(String str){
+    public String handler(String str){
         int i;
         
         if(str.indexOf("##Login##")==0){
@@ -81,17 +81,23 @@ public class ProtoX {
     /**
      * envia para o clinte uma mensagem de Confirmação, usada quando um confirmação é suficiente
      */
-    void confirmation(){
+    public void confirmation(){
         sock.toClient("##Accepted##");
     }
     /**
     * envia para o cliente uma mensagem de erro 
     */
-    void denied(){
+    public void denied(){
         sock.toClient("##Denied##");
     }
     
-    void sendShot(String position, int i){
+    /**
+     * metodo usado para enviar tiro para o destinatário
+     * @param position posiçao do tiro
+     * @param i se i maior que -1 entao o tiro acertou num barco, a mensagem é enviada de acordo
+     * @see SocketServer
+     */
+    public void sendShot(String position, int i){
         if(i >= 0){
             sock.toClient("##Shot##" + position + "##Red##");
             System.out.println("sendShot-> ##Shot##" + position + "##Red##");
@@ -102,7 +108,13 @@ public class ProtoX {
         
     }
     
-    void sendResponse(int i, String death){
+    /**
+     * responde a quem enviou o tiro, para saber se acertou ou nao.
+     * @param i se i maior que -1 então acertou, mensagem enviada de acordo
+     * @param death barco que morreu, se algum morreu, caso contrario está vazia
+     * @see SocketServer
+     */
+    public void sendResponse(int i, String death){
         if(i >= 0){
             sock.toClient("##ResponseToShot##" + death + "##Red##");
             System.out.println("##ResponseToShot##" + death + "##Red##");
@@ -113,27 +125,56 @@ public class ProtoX {
         
     }
     
-    void gameOver(){
+    /**
+     * envia mensagem pela socket de game over quando todos os barcos de um dos jogadores morreram
+     * @see SocketServer
+     */
+    public void gameOver(){
         sock.toClient("##GameOver##");
     }
     
-    void gameIsAlive(){
+    /**
+     * envia mensagem para a socket de que o jogo está vivo
+     * @see SocketServer
+     */
+    public void gameIsAlive(){
         sock.toClient("##GameIsAlive##");
     }
     
-    void confirmationNewGame(String order){
+    /**
+     * Envia mensagem a confirmar que foi aceite para um novo jogo atravez da socket
+     * @param order ordemde jogo, 1 se for jogador 1, 2 se for jogador 2
+     * @see SocketServer
+     */
+    public void confirmationNewGame(String order){
         sock.toClient("##Accepted" + order + "##");
     }
     
-    void loginConfirmation(int wins, int losses, int points){
+    /**
+     * envia para a socket confirmação de login, com os pontos, vitorias e derrotas.
+     * @param wins vitorias do jogador
+     * @param losses derrotas do jogador
+     * @param points pontos do jogador
+     * @see SocketServer
+     */
+    public void loginConfirmation(int wins, int losses, int points){
         sock.toClient("##Accepted##" + Integer.toString(wins) + "##" + Integer.toString(losses) + "##" + Integer.toString(points) + "##");
     }
     
-    void sendRanking(String rank){
+    /**
+     * envia para a socket o ranking ordenado por pontos
+     * @param rank String com ranking ##Jogador1##Pontos##Vitorias##Derrotas##Jogador2##...
+     * @see SocketServer
+     */
+    public void sendRanking(String rank){
         sock.toClient(rank);
     }
     
-    void sendPublicity(){
+    /**
+     * envia para a socket urls onde estão as imagens para a publicidade
+     * @see SocketServer
+     */
+    public void sendPublicity(){
         String complete;
         int i;
         

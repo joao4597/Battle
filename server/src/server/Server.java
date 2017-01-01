@@ -22,7 +22,7 @@ public class Server {
      * cria uma nova thread ClientThreads para tratar de todas a s necessidades de cada cliente <br>
      * @see ClientThreads
      * @param args the command line arguments
-     * @throws java.io.IOException
+     * @throws java.io.IOException para o jre
      */
     public static void main(String[] args) throws IOException{
         // TODO code application logic here

@@ -10,9 +10,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
+ *class usada para criar uma ligação á base de dados
  * @author joao
- * class usada para criar uma ligação á base de dados
+ * 
  */
 public class ConnectDB {
     

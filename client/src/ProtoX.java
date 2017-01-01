@@ -16,7 +16,7 @@ import model.User;
  */
 
 /**
- *
+ * Class usada para comunicação
  * @author joao
  */
 public class ProtoX {
@@ -41,8 +41,8 @@ public class ProtoX {
     /**
      * usado para enviar a informação de login de forma a que o servidor a consiga interpretar;<br>
      * recebe uma resposta da socket, interpreta-a e retorna de acordo com o recebido;<br>
-     * @param username
-     * @param password
+     * @param username username
+     * @param password password
      * @return (integer), 0 em caso de sucesso, 1 caso contrário;
      */
     public int login(String username, String password){
@@ -87,8 +87,8 @@ public class ProtoX {
     /**
      * usado para enviar um pedido de registo para o servidor;<br>
      * recebe e interpreta a resposta do servidor. (Registo pode não ser aceite caso username já exista);<br>
-     * @param username
-     * @param password
+     * @param username username
+     * @param password password
      * @return (integer), 0 em caso de sucesso, 1 caso contrário; 
      */
     public int register(String username, String password){
@@ -179,6 +179,11 @@ public class ProtoX {
 
         return i;
     }
+    
+    /**
+     * função usada para receber do servidor conjunto de urls
+     * @return lista de urls
+     */
     public List<URL> getImagesUrl(){
         String returned, aux;
         int i;

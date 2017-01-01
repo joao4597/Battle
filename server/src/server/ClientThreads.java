@@ -18,9 +18,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ *cada uma destas classes trata de todos os pedidos de um determinado cliente
  * @author joao
- * cada uma destas classes trata de todos os pedidos de um determinado cliente
+ * 
  */
 
 public class ClientThreads extends Thread{

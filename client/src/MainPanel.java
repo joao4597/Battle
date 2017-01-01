@@ -22,11 +22,8 @@ public class MainPanel extends javax.swing.JFrame {
     private User user;
     /**
      * Creates new form NewJFrame
-     * @param user
-     * @param points
-     * @param ranking
-     * @param wins
-     * @param loses
+     * @param user calass que contem informação do utilizador
+     * @see User
      */
     public MainPanel(User user) {
         initComponents();

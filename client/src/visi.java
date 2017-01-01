@@ -28,7 +28,11 @@ public class visi extends javax.swing.JFrame {
         initComponents();
     }
     
-    void getImagesFromUrl(){
+    /**
+     * metodo usado para receber urls do servidor, usando um metodo de ProtoX, guarda as imagens em ficheiros para serem usadas na publicidade
+     * @see ProtoX
+     */
+    public void getImagesFromUrl(){
         List<URL> urls;
         ProtoX proto = new ProtoX();
         urls = proto.getImagesUrl();
