@@ -6,6 +6,7 @@
 
 package server;
 
+import database.AddPointsDB;
 import java.util.List;
 /**
  * class que gere um jogo entre dois jogadores, ao criar a class é passada informação relaiva ao jogador 1, posição dos barcos e sokect
@@ -14,6 +15,8 @@ import java.util.List;
  */
 public class NewGame extends Thread{
     
+    String username1;
+    String username2;
     SocketServer sock1 = null;
     SocketServer sock2 = null;
     List<String> positionsList1 = null;
@@ -33,20 +36,23 @@ public class NewGame extends Thread{
     int submarino2 = 0;
     int destruidor2 = 0;
     
-    NewGame(List<String> positionsList, SocketServer sock){
+    NewGame(List<String> positionsList, SocketServer sock, String username){
         this.sock1 = sock;
+        this.username1 = username;
         this.positionsList1 = positionsList;
         proto1 = new ProtoX(sock);
     }
     
     /**
      * Metodo usado para guardar as informaçoes do jogador 2, guarda o que recebe em variaveis da class, Ainformação relativa ao primeiro jogador é passada no contrutor, este processo é gerido por WaitingList
+     * @param username
      * @see WatingList
      * @param positionsList posicoes dos barcos
      * @param sock socket para comunicar
      */
-    public void secondPlayer(List<String> positionsList, SocketServer sock){
+    public void secondPlayer(List<String> positionsList, SocketServer sock, String username){
         this.sock2 = sock;
+        this.username2 = username;
         this.positionsList2 = positionsList;
         proto2 = new ProtoX(sock);
     }
@@ -135,8 +141,12 @@ public class NewGame extends Thread{
                 }
             }
             
-            if(!gameIsAlive())
+            if(!gameIsAlive()){
+                AddPointsDB add = new AddPointsDB();
+                add.addPoints(this.username1, 100);
+                System.out.println("Chamou add.addPoints com username" + username1);
                 break;
+            }
             
             proto1.gameIsAlive();
             proto2.gameIsAlive();
@@ -188,6 +198,14 @@ public class NewGame extends Thread{
                     }
                 }
             }
+            
+            if(!gameIsAlive()){
+                AddPointsDB add = new AddPointsDB();
+                add.addPoints(this.username2, 100);
+                System.out.println("Chamou add.addPoints com username" + username2);
+                break;
+            }
+            
             proto1.gameIsAlive();
             proto2.gameIsAlive();
         }

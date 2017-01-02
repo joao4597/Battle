@@ -409,9 +409,6 @@
                               <Font name="Ubuntu" size="18" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/images/pqueno1.jpeg"/>
-                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel21">
@@ -420,9 +417,6 @@
                               <Font name="Ubuntu" size="18" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/images/pequeno2.jpeg"/>
-                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel22">
@@ -431,9 +425,6 @@
                               <Font name="Ubuntu" size="18" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/images/pqueno3.jpeg"/>
-                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel23">
@@ -442,9 +433,6 @@
                               <Font name="Ubuntu" size="18" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/images/pqueno4.PNG"/>
-                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel24">
@@ -453,9 +441,6 @@
                               <Font name="Ubuntu" size="18" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/images/pequeno5.jpg"/>
-                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -630,9 +615,6 @@
                                       <Font name="Ubuntu" size="36" style="0"/>
                                     </Property>
                                     <Property name="horizontalAlignment" type="int" value="0"/>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/images/quick1.png"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -666,9 +648,6 @@
                                       <Font name="Ubuntu" size="36" style="0"/>
                                     </Property>
                                     <Property name="horizontalAlignment" type="int" value="0"/>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/images/quick2.jpg"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -702,9 +681,6 @@
                                       <Font name="Ubuntu" size="36" style="0"/>
                                     </Property>
                                     <Property name="horizontalAlignment" type="int" value="0"/>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/images/quick3.jpg"/>
-                                    </Property>
                                   </Properties>
                                 </Component>
                               </SubComponents>

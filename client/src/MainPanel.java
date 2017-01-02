@@ -22,13 +22,10 @@ public class MainPanel extends javax.swing.JFrame {
     private User user;
     /**
      * Creates new form NewJFrame
-<<<<<<< HEAD
      * @param user calass que contem informação do utilizador
      * @see User
-=======
-     * @param user
->>>>>>> cabeef0ead0e039552a187a0d2b456f590856c18
      */
+    
     public MainPanel(User user) {
         initComponents();
         this.user = user;
@@ -39,6 +36,23 @@ public class MainPanel extends javax.swing.JFrame {
         labelLoses.setText("Loses: " + user.getLosses());
         ImageIcon iconLogo = new ImageIcon("src/images/mainr.jpg");
         jLabel15.setIcon(iconLogo);
+        ImageIcon iconLogo1 = new ImageIcon("src/images/pqueno1.jpeg");
+        jLabel20.setIcon(iconLogo1);
+        ImageIcon iconLogo2 = new ImageIcon("src/images/pequeno2.jpeg");
+        jLabel21.setIcon(iconLogo2);
+        ImageIcon iconLogo3 = new ImageIcon("src/images/pqueno3.jpeg");
+        jLabel22.setIcon(iconLogo3);
+        ImageIcon iconLogo4 = new ImageIcon("src/images/pqueno4.PNG");
+        jLabel23.setIcon(iconLogo4);
+        ImageIcon iconLogo5 = new ImageIcon("src/images/pequeno5.jpg");
+        jLabel24.setIcon(iconLogo5);
+        ImageIcon iconLogo6 = new ImageIcon("src/images/quick1.png");
+        jLabel17.setIcon(iconLogo6);
+        ImageIcon iconLogo7 = new ImageIcon("src/images/quick2.jpg");
+        jLabel18.setIcon(iconLogo7);
+        ImageIcon iconLogo8 = new ImageIcon("src/images/quick3.jpg");
+        jLabel19.setIcon(iconLogo8);
+        
     }
     
     void resetButtons(){
@@ -289,23 +303,18 @@ public class MainPanel extends javax.swing.JFrame {
 
         jLabel20.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pqueno1.jpeg"))); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pequeno2.jpeg"))); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pqueno3.jpeg"))); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pqueno4.PNG"))); // NOI18N
 
         jLabel24.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pequeno5.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -413,7 +422,6 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel17.setBackground(new java.awt.Color(254, 254, 254));
         jLabel17.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quick1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -431,7 +439,6 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel18.setBackground(new java.awt.Color(254, 254, 254));
         jLabel18.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quick2.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -449,7 +456,6 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel19.setBackground(new java.awt.Color(254, 254, 254));
         jLabel19.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quick3.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);

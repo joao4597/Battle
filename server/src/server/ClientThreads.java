@@ -53,7 +53,7 @@ public class ClientThreads extends Thread{
         
         String returned;
         boolean retrunedB;
-        
+        String usernameUlt = "wer";
         ProtoX proto = new ProtoX(sock);
         
         try{
@@ -66,6 +66,8 @@ public class ClientThreads extends Thread{
                     if(playersLogedIn.addPlayer(proto.string_1)){
                         proto.loginConfirmation(loginDB.wins, loginDB.losses, loginDB.points);
                         this.username = proto.string_1;
+                        usernameUlt = proto.string_1;
+                        System.out.println("Guardei username:" + this.username + proto.string_1);
                     }else
                         proto.denied();
                 }else{
@@ -85,7 +87,8 @@ public class ClientThreads extends Thread{
             }else if(returned.equals("Publicity")){
                 proto.sendPublicity();
             }else if(returned.equals("NewGame")){
-                WatingList watingList = new WatingList(proto.positionsList, sock);
+                WatingList watingList = new WatingList(proto.positionsList, sock, usernameUlt);
+                System.out.println("Chamou WaitingList com username:" + this.username);
                 NewGame newGame = watingList.returnThread();
                 if(watingList.returnOrder() == 1){
                     while(newGame.isAlive() == false);

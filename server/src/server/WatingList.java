@@ -16,12 +16,12 @@ public class WatingList {
     static boolean wating = false;
     static NewGame game = null; 
     
-    WatingList(List<String> positionsList, SocketServer sock){
+    WatingList(List<String> positionsList, SocketServer sock, String username){
         if(wating == false){
-            game = new NewGame(positionsList, sock);
+            game = new NewGame(positionsList, sock, username);
             wating = true;
         }else{
-            game.secondPlayer(positionsList, sock);
+            game.secondPlayer(positionsList, sock, username);
             wating = false;
         }
     }

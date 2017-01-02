@@ -12,6 +12,12 @@ public class Ships extends javax.swing.JPanel {
     private IJ jogo;
     private Game table;
     
+    
+    /**
+     * Embarcação do jogador
+     * O construtor coloca ao lado do tabuleiro os barcos que serão parte do jogo
+     * @param table Tabuleiro onde a embarcação vai ficar
+     */
     public Ships(Game table) {
         initComponents();
         this.jButton1.setText("Começar jogar");
@@ -71,6 +77,10 @@ public class Ships extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Função para verificar se todos os barcos estão colocados no tabuleiro
+     * @return (booleano) true para barcos todos postos ou false em caso contrário
+     */
     public boolean allPosition() {
         boolean result = true;
         for(ShipIO shipIO : this.ships.values()) {
@@ -81,6 +91,10 @@ public class Ships extends javax.swing.JPanel {
         return result;
     }
     
+    /**
+     * Função para indicar qual é o navio fora do tabuleiro atualmente selecionado
+     * @return interface do navio que está selecionado
+     */
     public ShipIO getActiveShip() {
         ShipIO result = null;
         
@@ -92,6 +106,12 @@ public class Ships extends javax.swing.JPanel {
         return result;
     }
     
+    
+    /**
+     * Função para colocar um navio no tabuleiro, numa posição inicial definida
+     * @param pt Posição inicial
+     * @return interface do navio colocada no tabuleiro
+     */
     public ShipIO getShipInPosition(Point pt) {
         ShipIO result = null;
         
@@ -106,7 +126,9 @@ public class Ships extends javax.swing.JPanel {
     }
     
    
-    
+    /**
+     * Função para deselecionar todos os navios fora do tabuleiro
+     */
     public void unSelectAll() {
         for(ShipIO shipIO : ships.values()) {
             shipIO.unSelectShip();

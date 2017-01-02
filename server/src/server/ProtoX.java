@@ -179,8 +179,20 @@ public class ProtoX {
         int i;
         
         complete = "##";
+        complete = complete + "https://s27.postimg.org/nirkevdib/mainr.jpg##"; 
+        complete = complete + "https://s24.postimg.org/8oas5zyp1/pqueno1.jpg##";
+        complete = complete + "https://s30.postimg.org/47g1e8fq9/pequeno2.jpg##";
+        complete = complete + "https://s27.postimg.org/ovduui0bn/pqueno3.jpg##";
+        complete = complete + "https://s23.postimg.org/lbckl6r57/pqueno4.png##";
+        complete = complete + "https://s29.postimg.org/7by86r593/pequeno5.jpg##";
+        complete = complete + "https://s24.postimg.org/mbil32l11/quick1.png##";
+        complete = complete + "https://s30.postimg.org/etorfq5f5/quick2.jpg##";
+        complete = complete + "https://s23.postimg.org/ia3pb4vu3/quick3.jpg##";
         
-        Path file = Paths.get("UrlList.txt");
+        
+        
+        
+        /*Path file = Paths.get("UrlList.txt");
 
         try (InputStream in = Files.newInputStream(file);
             BufferedReader reader =
@@ -192,7 +204,7 @@ public class ProtoX {
             }
         } catch (IOException x) {
             System.err.println(x);
-        }
+        }/**/
         sock.toClient(complete);
         System.out.println(complete);
     }    

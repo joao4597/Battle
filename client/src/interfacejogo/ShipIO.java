@@ -10,6 +10,12 @@ public class ShipIO extends javax.swing.JPanel {
     private Ship ship;
     public final int SIZE_SHIP = 40;
     
+    
+    /**
+     * Construtor para definir qual é o barco e o tabuleiro onde irá pertencer
+     * @param ship Navio desta interface
+     * @param table Tabuleiro dono deste navio
+     */
     public ShipIO(Ship ship,Game table) {
         initComponents();
         this.table = table;
@@ -124,6 +130,9 @@ public class ShipIO extends javax.swing.JPanel {
         ship.setHover(true);
     }
     
+    /**
+     * Função para descelecionar um navio
+     */
     public void unSelectShip() {
         verticalShip.setBorder(BorderFactory.createBevelBorder(0));
         horizontalShip.setBorder(BorderFactory.createBevelBorder(0));
@@ -131,6 +140,9 @@ public class ShipIO extends javax.swing.JPanel {
         ship.setHover(false);
     }
     
+    /**
+     * Função para fazer desaparecer um navio quando este é colocado no tabuleiro
+     */
     public void disableShip() {
         horizontalShip.setVisible(false);
         verticalShip.setVisible(false);

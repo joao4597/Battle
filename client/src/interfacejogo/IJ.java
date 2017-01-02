@@ -11,6 +11,14 @@ public class IJ extends javax.swing.JFrame {
     
     public IJ() { }
     
+    /**
+     * class que constoi todo o JFrame final, meu tabuleiro, tabuleiro do enimigo e informação de ambos
+     * @param Proprio objeto do tipo Game com o tabuleiro anteriormente preenchido
+     * @param quickGame true se for um quick gmae
+     * @param comecaProprio true se for o primeiro a mandar tiro, false se o primeiro for o adeversario
+     * @param user objeto com a informaçao do jogaodr (tipo User)
+     * @param adversary objeto com a informacao do adversario (tipo UUser)
+     */
     public IJ(Game Proprio, boolean quickGame,boolean comecaProprio,User user,User adversary) {
         initComponents();
         this.setBounds(new Rectangle(1200,1000));
@@ -31,6 +39,9 @@ public class IJ extends javax.swing.JFrame {
         //else tabuleiroInimigo.number = -1;
     }
     
+    /**
+     * Recebe tiro de adversario
+     */
     public void adversarioJoga() {
         System.out.println("Mandar tiro " + tabuleiroProprio.isFirst());
         if (!this.tabuleiroProprio.isFirst()) {
@@ -57,6 +68,11 @@ public class IJ extends javax.swing.JFrame {
         //tabuleiroInimigo.number = -1;
     }
 
+    /**
+     * atualiza o tabuleiro com os barcos do jogador e coloca um X na posição em que foi atingido
+     * @param color cor
+     * @param stPosition posiçao em que foi atingido 
+     */
     public void updateMyTable(String color, String stPosition) {
         Point position = tabuleiroProprio.calculatePositionBasedOnString(stPosition);
         if(position.x != -1 && position.y != -1){

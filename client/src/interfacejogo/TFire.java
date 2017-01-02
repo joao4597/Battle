@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author plima
+ * @author joao
  */
 public class TFire implements Runnable{
     private Game game = null;
@@ -24,6 +24,14 @@ public class TFire implements Runnable{
         this.allGame = allGame;
     }
     
+    
+    /**
+     * Thread para verificar o resultado de um tiro realizado pelo próprio jogador
+     * 
+     * Envia-se uma mensagem ao servidor como se mandou um tiro e o servidor retorna a mensagem com a cor que se deve colocar nessa posição
+     * Blue e a posição fica azul, logo a pessoa nao acertou em nenhum barco
+     * Red e a posição fica vermelha, logo a pessoa acertou num barco
+     */
     @Override
     public void run() {
 
@@ -55,6 +63,11 @@ public class TFire implements Runnable{
         
     }
     
+    /**
+     * Verificar se o jogo terminou ou nao
+     * @param message mensagem que o servidor envia ao jogador depois de qualquer ação de tiro
+     */
+    
     public void verifySate(String message) {
         if (message.equals("##GameOver##")) {
             if (this.game.getTotalDead() == 5) {
@@ -65,7 +78,11 @@ public class TFire implements Runnable{
             JOptionPane.showMessageDialog(null, message, "Status: ", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+    /**
+     * pinta o quadrado onde mandou o tiro, vermelho se acertou, azul se falho
+     * @param color String red, blue
+     * @param position posiçao
+     */
     public void paintReceiveShot(String color,String position) {
         if(allGame != null) {
            allGame.updateMyTable(color, position);
