@@ -43,6 +43,7 @@ public class ClientThreads extends Thread{
      * usa a class ProtoX para interpretar o pedido;<br>
      * caso seja um pedido de login usa a Class LoginDB para o concretizar;<br>
      * caso seja um pedido de registo usa a class RegisterDB para o concretizar;<br>
+     * etc...<br>
      * mediante o resultado das ações usa a class ProtoX para devolver a resposta
      * ao cliente;
      * @see LoginDB

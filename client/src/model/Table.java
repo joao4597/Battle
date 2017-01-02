@@ -10,7 +10,7 @@ import interfacejogo.Ships;
 
 /**
  *
- * @author plima
+ * @author joao
  */
 public class Table {
     public Position local[][] = new Position[10][10];

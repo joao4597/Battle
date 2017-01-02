@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author plima
+ * @author joao
  */
 public enum SHIP_TYPE {
     DESTROY,

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import interfacejogo.SocketClient;
 import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;

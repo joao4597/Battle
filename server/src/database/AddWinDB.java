@@ -11,45 +11,42 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * class usada para adicionar pontos a um jogador
+ * Class Usada para adicionar vitorias
  * @author joao
  */
-public class AddPointsDB {
-    
+public class AddWinDB {
     private Connection con = null;
     
-    public AddPointsDB(){
+    public AddWinDB(){
         ConnectDB connectDB = new ConnectDB();
         con = connectDB.getConn();
     }
     
     /**
-     * adiciona pontos ao jogador passado nos argumentos
-     * @param username username
-     * @param points pontos a adicionar
+     * addiciona uma vitoria ao jogador passado nos parametros
+     * @param username String com o useranme pretendido
      */
-    public void addPoints(String username, int points){
-        int oldpoints=0;
+    public void addWin(String username){
+        int oldWins=0;
         
-        try (PreparedStatement st = con.prepareStatement("SELECT points FROM users WHERE username = ?")) {
+        try (PreparedStatement st = con.prepareStatement("SELECT wins FROM users WHERE username = ?")) {
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
             while(rs.next() != false)
-                oldpoints = rs.getInt("points");
+                oldWins = rs.getInt("wins");
             rs.close();
         }catch(SQLException e){
-            System.out.println("Ao ler pontos da base de dados");
+            System.out.println("Ao ler losses da base de dados");
         }
         
-        try (PreparedStatement st = con.prepareStatement("UPDATE users SET points = ? WHERE username = ?")) {
-            st.setInt(1, oldpoints + points);
+        try (PreparedStatement st = con.prepareStatement("UPDATE users SET wins = ? WHERE username = ?")) {
+            st.setInt(1, oldWins + 1);
             st.setString(2, username);
             st.execute();
         }catch(SQLException e){
-            System.out.println("Exceção ao atualizar pontos");
+            System.out.println("Exceção ao atualizar derrotas");
             e.printStackTrace(System.err);
         } 
         
     }
-    
 }

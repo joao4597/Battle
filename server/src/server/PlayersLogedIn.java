@@ -13,7 +13,7 @@ import java.util.List;
  * @author joao
  */
 public class PlayersLogedIn {
-    private List<String> playersLogedIn = null;
+    public List<String> playersLogedIn = null;
     
     /**
      * cronstrutor de players logedin, cria uma lista de Strings para guardar todos os jogadores que fizeram login

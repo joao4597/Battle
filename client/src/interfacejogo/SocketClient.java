@@ -15,7 +15,7 @@ import java.net.UnknownHostException;
  */
 
 /**
- *
+ *Class usada para cirar um socket para estabelecer comunicação com um servidor
  * @author joao
  */
 public class SocketClient{

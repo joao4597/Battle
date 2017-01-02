@@ -29,6 +29,8 @@ public class Server {
         SocketServer sock = null;
         ClientThreads threads = null;
         PlayersLogedIn playersLogedIn = new PlayersLogedIn();
+        ReadInputs readInputs = new ReadInputs(playersLogedIn);
+        readInputs.start();
         
         try{
             while(true){

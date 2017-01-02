@@ -6,7 +6,9 @@
 
 package server;
 
+import database.AddLosseDB;
 import database.AddPointsDB;
+import database.AddWinDB;
 import java.util.List;
 /**
  * class que gere um jogo entre dois jogadores, ao criar a class é passada informação relaiva ao jogador 1, posição dos barcos e sokect
@@ -44,8 +46,8 @@ public class NewGame extends Thread{
     }
     
     /**
-     * Metodo usado para guardar as informaçoes do jogador 2, guarda o que recebe em variaveis da class, Ainformação relativa ao primeiro jogador é passada no contrutor, este processo é gerido por WaitingList
-     * @param username
+     * Metodo usado para guardar as informaçoes do jogador 2, guarda o que recebe em variaveis da class, A informação relativa ao primeiro jogador é passada no contrutor, este processo é gerido por WaitingList
+     * @param username String com o username do Jogador 2
      * @see WatingList
      * @param positionsList posicoes dos barcos
      * @param sock socket para comunicar
@@ -80,7 +82,7 @@ public class NewGame extends Thread{
     
     /**
      * metodo run gere o jogo, recebe tiros intercalados de cada um dos jogadores, verifica se acertou em algum barco, envia uma resposta para quem enviou o tiro a dizer se acertou ou nao
-     * e envia uma mensagem para quem o tiro é destinado com a posiçao e com a informaçao de que acertou ou na; Para alem disto envia tambem entre cada tiro uma mensagem a dizer se o jogo já acabou ou nao.
+     * e envia uma mensagem para quem o tiro é destinado com a posiçao e com a informaçao de que acertou ou não; Para alem disto envia tambem entre cada tiro uma mensagem a dizer se o jogo já acabou ou nao.
      * Para enviar as mensagens usa o ProtoX
      * @see ProtoX
      */
@@ -144,6 +146,10 @@ public class NewGame extends Thread{
             if(!gameIsAlive()){
                 AddPointsDB add = new AddPointsDB();
                 add.addPoints(this.username1, 100);
+                AddWinDB win = new AddWinDB();
+                win.addWin(username1);
+                AddLosseDB losse = new AddLosseDB();
+                losse.addLossse(username2);
                 System.out.println("Chamou add.addPoints com username" + username1);
                 break;
             }
@@ -169,28 +175,28 @@ public class NewGame extends Thread{
                             proto2.sendResponse(i, "");
                     }else if(i >= 5 && i <=8){
                         navioDeGuerra1++;
-                        proto1.sendShot(proto1.shot, i);
+                        proto1.sendShot(proto2.shot, i);
                         if(navioDeGuerra1 == 4)
                             proto2.sendResponse(i, "navioDeGuerraDead");
                         else
                             proto2.sendResponse(i, "");
                     }else if(i >= 9 && i <=11){
                         cruzador1++;
-                        proto1.sendShot(proto1.shot, i);
+                        proto1.sendShot(proto2.shot, i);
                         if(cruzador1 == 3)
                             proto2.sendResponse(i, "cruzadorDead");
                         else
                             proto2.sendResponse(i, "");
                     }else if(i >= 12 && i <=14){
                         submarino1++;
-                        proto1.sendShot(proto1.shot, i);
+                        proto1.sendShot(proto2.shot, i);
                         if(submarino1 == 3)
                             proto2.sendResponse(i, "submarinoDead");
                         else
                             proto2.sendResponse(i, "");
                     }else if(i >= 15 && i <=16){
                         destruidor1++;
-                        proto1.sendShot(proto1.shot, i);
+                        proto1.sendShot(proto2.shot, i);
                         if(destruidor1 == 2)
                             proto2.sendResponse(i, "destruidorDead");
                         else
@@ -202,6 +208,10 @@ public class NewGame extends Thread{
             if(!gameIsAlive()){
                 AddPointsDB add = new AddPointsDB();
                 add.addPoints(this.username2, 100);
+                AddWinDB win = new AddWinDB();
+                win.addWin(username2);
+                AddLosseDB losse = new AddLosseDB();
+                losse.addLossse(username1);
                 System.out.println("Chamou add.addPoints com username" + username2);
                 break;
             }

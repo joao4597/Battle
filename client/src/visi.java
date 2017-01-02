@@ -406,7 +406,7 @@ public class visi extends javax.swing.JFrame {
                 jLabel2.setText("Wrong Username");
             else if(returned == 1){
                 jLabel2.setForeground(new java.awt.Color(255, 27, 0));
-                jLabel2.setText("Wrong PassWord");
+                jLabel2.setText("Denied");
             }
         }else if((LogUser.getText()).length()<1){
             jLabel2.setText("Invalid Username");
